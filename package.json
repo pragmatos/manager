@@ -1,0 +1,21 @@
+{
+  "name": "manager",
+  "version": "0.0.1",
+  "description": "Manager IPTV",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Viktor Shevchuk",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "gulp": "^3.9.1",
+    "mongoose": "^4.4.19",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2"
+  }
+}

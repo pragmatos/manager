@@ -1,0 +1,13 @@
+
+<ul class="nav nav-list">
+                    <li class="nav-header">Категорія</li>
+                    <li data="0" class="active" ><a href="#"  data-bypass>Всі</a></li>
+                    <% category.each(function(item){%>
+                    <li data="<%=item.id%>"><a href="#" data-bypass><%=item.get('name')%></a></li>
+                    <%});%>
+                    
+                </ul>
+
+ 
+
+

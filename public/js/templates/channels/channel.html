@@ -1,0 +1,59 @@
+
+        <!--<img  width="150" height="150" <% if(channel.img) {%>
+             src="<%= channel.img  %>"
+             <%}else{%>
+             src="public/img/tv.png"
+             <%}%>
+             />
+    
+    <div class="info ">
+        <div class="name span1">
+           
+        </div>
+        <div class="href"><%=channel.href%></div>
+        <div class="description"><%= channel.description%></div>
+        <%if(logged_in){%>
+            <%if(channel.added){%>
+            <div class="added">ghghg</div>
+             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <%}%>
+            <%if(!channel.added){%>
+            <div  class="addchannel"></div>
+           
+            <%}%>
+        <%}%>-->
+        <div>
+       
+        <img class="left"  width="128" height="128" <% if(channel.img) {%>
+             src="<%= channel.img  %>"
+             <%}else{%>
+             src="public/img/tv.png"
+             <%}%>
+             />
+        </div>
+        <div class="info ">
+            <%if(channel.typeip_id ==2){%>
+            <div class="typeip_radio left"></div>
+            <%}else{%>
+            <div class="typeip_tv left"></div>
+            <%}%>
+            <%if(logged_in){%>
+            <%if(channel.added){%>
+            <div class="added right"></div>
+             
+            <%}%>
+            <%if(!channel.added){%>
+            <div  class="addchannel"></div>
+           
+            <%}%>
+        <%}%>
+            <h3><%=channel.name%></h3>
+            <h5><i><%=channel.href%></i></h5>
+            <p><%= channel.description%></p>
+            
+        </div>
+        <div class="clear"></div>
+                
+            
+        
+        

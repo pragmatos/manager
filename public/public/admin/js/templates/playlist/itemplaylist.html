@@ -1,0 +1,21 @@
+
+<span class="list-header"><div class="left typeip<%=channel.typeip_id%>"></div><%= channel.name %><div class="delete-icon right"></div></span>
+
+		<div class="details">
+                    <img class="left" width="30" height="30" <% if(channel.img) {%>
+             src="<%= channel.img  %>"
+             <%}else{%>
+             src="public/img/tv.png"
+             <%}%>/>
+             <table>
+                 <tr>
+                     <th>Href:</th>
+                     <td><%=channel.href%></td>
+                 </tr>
+                 <tr>
+                     <th>Опис:</th>
+                     <td><%=channel.description %></td>
+                 </tr>
+             </table>
+			
+		</div>

@@ -1,0 +1,172 @@
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+footer {
+  display: none;
+}
+th i {
+  margin-right: 5px;
+}
+.ajax-loader {
+  display: none;
+}
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
+.clear{
+    clear: both;
+}
+/* Twitter bootstrap bug..? */
+.input-prepend .add-on, .input-prepend .btn {
+    margin-right: -5px;
+}
+.channel{
+    border: #000000 solid 2px;
+    width: 500px;
+}
+.channel.info{
+    
+}
+.channel.logo{
+    width: 150px;
+    height: 150px;
+}
+.addchannel{
+    float: right;
+    background: url(../img/add_s.gif);
+    background-position: 20px 0px;
+    width: 20px;
+    height: 20px;
+}
+.addchannel:hover{
+    cursor: pointer;
+    background-position: 0 0 ;
+}
+
+#wrapper {
+}
+/*h1 {
+	margin:0px;
+	color:#fff;
+	padding:20px;
+	text-align:center;
+	font-weight:100;
+}*/
+.tools {
+    text-align:center;
+    color:#fff;
+}
+#searchBox {
+	padding:7px;
+	border:none;
+	border-radius:5px;
+	font-size:1.2em;
+}
+a.filter {
+	display:inline-block;
+	padding:5px 10px;
+	margin:5px;
+	background:#0472C0;
+	color:#fff;
+	text-decoration:none;
+	border-radius:3px;
+}
+a.filter:hover {
+	background:#0B9DE0;
+	color:#fff;
+}
+#count {
+	color:#000;
+	display:block;
+	padding:10px;
+}
+ul#listing {
+	list-style:none;
+	padding:0px;
+	margin:0px;
+	background:#fff;
+	width:600px;
+}
+ul#listing li {
+    
+	list-style:none;
+	border-bottom:1px solid #eee;
+	display:block;
+}
+ul#listing li .list-header {
+	padding:10px;
+	cursor:pointer;
+	display:block;
+}
+ul#listing li .typeip0 {
+    background: url("../img/radio_icon.png");
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+}
+
+ul#listing li .list-header:hover {
+	//background:#f0f1f2 ;
+        background:#efefef;
+}
+ul#listing li .list-header.active {
+	
+        background: silver;
+	//color:#fff;
+}
+ul#listing li .details {
+	display:none;
+	//background:gray;
+	padding:20px;
+	font-size:0.9em;
+}
+ul#listing li .delete-icon{
+    //margin-top: 10px;
+    //margin-right: 10px;
+    background: url('../img/delete_icon.png');
+    width: 16px;
+    height: 16px;
+}
+ul#listing li .delete-icon:hover{
+    background-position: 0 16px;
+    cursor: pointer;
+}
+ul#listing li th{
+    vertical-align: top;
+    text-align: right;
+
+}
+ .typeip_radio{
+    width: 16px;
+    background: url("../img/radio_icon.png");
+    height: 16px;
+   
+}
+ .typeip_tv{
+    width: 16px;
+    background: url("../img/tv_icon.png");
+    height: 16px;
+    
+}
+table.border{
+    width: 100%;
+}
+table.border input{
+    width: 100px;
+}
+table.border select{
+    width: 50px;
+}
+table.border td{
+    border: 1px gray solid;
+}
+table.border td.name{
+    width: 100px;
+}
+table.border td.href{
+    width: 150px;
+}

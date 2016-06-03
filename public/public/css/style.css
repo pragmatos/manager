@@ -1,0 +1,229 @@
+
+html, body {
+    height: 100%;
+    
+}
+body{
+    padding-top: 50px;
+}
+.container.main{
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin-bottom:  -40px ; /* отрицательный нижний отступ на высоту футера */
+    
+}
+footer{
+    background: #f7f7f7 ;
+}
+footer, .for-footer {
+  height: 40px;
+  
+}
+footer.container{
+    border-right:  1px solid #dae2e8;
+    border-left:  1px solid #dae2e8;
+}
+
+th i {
+  margin-right: 5px;
+}
+.ajax-loader {
+  display: none;
+}
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
+.clear{
+    clear: both;
+}
+/* Twitter bootstrap bug..? */
+.input-prepend .add-on, .input-prepend .btn {
+    margin-right: -5px;
+}
+.channel{
+    border: #000000 solid 2px;
+    width: 500px;
+}
+.channel.info{
+    
+}
+.channel.logo{
+    width: 150px;
+    height: 150px;
+}
+.addchannel{
+    float: right;
+    background: url(../img/add_s.gif);
+    background-position: 20px 0px;
+    width: 20px;
+    height: 20px;
+}
+.addchannel:hover{
+    cursor: pointer;
+    background-position: 0 0 ;
+}
+
+#wrapper {
+}
+/*h1 {
+	margin:0px;
+	color:#fff;
+	padding:20px;
+	text-align:center;
+	font-weight:100;
+}*/
+.tools {
+    text-align:center;
+    color:#fff;
+}
+#searchBox {
+	padding:7px;
+	border:none;
+	border-radius:5px;
+	font-size:1.2em;
+}
+a.filter {
+	display:inline-block;
+	padding:5px 10px;
+	margin:5px;
+	background:#0472C0;
+	color:#fff;
+	text-decoration:none;
+	border-radius:3px;
+}
+a.filter:hover {
+	background:#0B9DE0;
+	color:#fff;
+}
+#count {
+	color:#000;
+	display:block;
+	padding:10px;
+}
+ul#listing {
+	list-style:none;
+	padding:0px;
+	margin:0px;
+	background:#fff;
+	width:100%;
+}
+ul#listing li {
+    
+	list-style:none;
+	border-bottom:1px solid #eee;
+	display:block;
+}
+ul#listing li .list-header {
+	padding:10px;
+	cursor:pointer;
+	display:block;
+        margin: 0 auto;
+}
+ul#listing li .typeip0 {
+    background: url("../img/radio_icon.png");
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+}
+
+ul#listing li .list-header:hover {
+	//background:#f0f1f2 ;
+        background:#efefef;
+}
+ul#listing li .list-header.active {
+	
+        background: silver;
+	//color:#fff;
+}
+ul#listing li .details {
+	display:none;
+	//background:gray;
+	padding:20px;
+	font-size:0.9em;
+}
+ .delete-icon{
+    background: url('../img/delete_icon.png');
+    width: 16px;
+    height: 16px;
+}
+ .delete-icon:hover{
+    background-position: 0 16px;
+    cursor: pointer;
+}
+ul#listing li th{
+    vertical-align: top;
+    text-align: right;
+
+}
+
+.container.main{
+    border-right:  1px solid #dae2e8;
+    border-left:  1px solid #dae2e8;
+   
+}
+.container.main .page-content{
+    height: 100%;
+}
+.container table{
+    width: 100%;
+}
+.container td{
+    vertical-align: top;
+    border-right:  1px solid #dae2e8;
+}
+
+.container td#channels{
+    width: 634px;
+    //border-right:  1px solid #dae2e8; 
+}
+#channels .list{
+    margin: 0;
+    width: 100%;
+    list-style: none;
+}
+#channels .list li{
+    background: #f7f7f7;
+    margin: 20px ;
+    height:128px;
+    border: 1px #d7d7d7 solid;
+    overflow: hidden;
+}
+#channels .list li img{
+    margin-right: 20px;
+}
+#channels .list li h5{
+    color: #005580;
+}
+#channels .list li h2{
+    text-align: center;
+}
+li .typeip_radio{
+    width: 16px;
+    background: url("../img/radio_icon.png");
+    height: 16px;
+    margin: 4px 30px 0 0;
+}
+ li .typeip_tv{
+    width: 16px;
+    background: url("../img/tv_icon.png");
+    height: 16px;
+    margin: 4px 30px 0 0;
+}
+#channels .list li .added{
+    width: 22px;
+    height: 22px;
+    background: url("../img/added_icon.png");
+}
+.panel div{
+   // border-bottom: 1px solid #dae2e8;
+    padding: 10px 0;
+}
+.container td#playlist{
+    padding-top: 10px;
+    width: 634px;
+    //border-right:  1px solid #dae2e8; 
+}
