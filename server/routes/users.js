@@ -18,10 +18,19 @@ module.exports = (function() {
                     if(err) res.send("error");
                     if(user) res.json({msg:"Користувач з таким логином існує!"});
                     else{
-                        var newUser = new User(req.body);
+                        console.log(req.body);
+                        var newUser = new User({
+                            name: req.body.name,
+                            login: req.body.login,
+                            pass: req.body.pass,
+                            email: req.body.email
+                        });
                         newUser.save(function(err){
                             if(err) res.send(err);
-                                res.json(req.body); 
+                                res.json({
+                                    name: newUser.name,
+                                    login: newUser.login
+                                }); 
                         });
                     }
                 });  

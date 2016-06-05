@@ -1,13 +1,10 @@
-const express = require('express');
-const router  = express.Router();
-
 const middleware = require('./middlewares/auth');
 
 const channels = require('./routes/channels');
 const users = require('./routes/authentication');
 
-module.exports = (function() {
-    var router = express.Router();
+module.exports = function(app, express) {
+	var router = express.Router();
 
     router.get('/channels', channels.getAll);
 	router.post('/channels', channels.post);
@@ -25,4 +22,4 @@ module.exports = (function() {
 	router.get('/token', middleware.isAuth)
 
     return router;    
-})();
+};

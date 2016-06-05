@@ -7,16 +7,23 @@ const path = require('path');
 const config = require('./server/config');
 const app = express();
 
-mongoose.connect(config.database); 
+mongoose.connect(config.database, (err)=>{
+	if(err){
+		console.log(err);
+	} else{
+		console.log('DB Connected..');
+	}
+
+}); 
 
 app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'public')));
 
 
 //routes for api
-const apiRouter = require('./server/routes');
+const apiRouter = require('./server/routes')(app, express);
 app.use('/api', apiRouter);
 
 app.get('/',(req,res)=>{
@@ -28,6 +35,6 @@ app.get('/admin',(req,res)=>{
 	res.sendFile('admin.html',{'root':__dirname+'/public/'});
 });
 
-app.listen(3333, ()=>{
-	console.log('good');
+app.listen(config.port, ()=>{
+	console.log('Listening on port: ' + config.port);
 });

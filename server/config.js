@@ -1,4 +1,5 @@
 module.exports = {
-	database:'mongodb://127.0.0.1:27017/manager',
-	secret:'MyKey'
+	database:'mongodb://root:qwe123@ds023603.mlab.com:23603/manager',
+	secret:'MyKey',
+	port: process.env.PORT ||3000
 }

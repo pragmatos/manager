@@ -1,5 +1,7 @@
 const mongoose    = require('mongoose');
 const Schema      = mongoose.Schema;
+const bcrypt      = require('bcrypt-nodejs');
+
 
 const UserSchema = new Schema({
     name: {type: String, required: true},
@@ -10,15 +12,22 @@ const UserSchema = new Schema({
     createdAt: {type: Date, default: Date.now},    
 });
 
-UserSchema.methods.test = function(a){
-	console.log(a);
-}
+UserSchema.pre('save', function (next){
 
-UserSchema.pre('save', function(next){
-    now = new Date();
-    if (!this.createdAt) {
-        this.createdAt = now;
-    }
-    next();
+    var user = this;
+
+    bcrypt.hash(user.pass, null, null, function(err, hash){
+        
+        if(err) return next(err);
+
+        user.pass = hash;
+        next();
+    });
 });
-module.exports = mongoose.model('user', UserSchema);
+
+UserSchema.methods.comparePass = function(pass){
+
+    return bcrypt.compareSync(pass, this.pass); 
+
+}
+module.exports = mongoose.model('User', UserSchema);
