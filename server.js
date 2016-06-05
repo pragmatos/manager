@@ -26,13 +26,8 @@ app.use(express.static(path.join(__dirname,'public')));
 const apiRouter = require('./server/routes')(app, express);
 app.use('/api', apiRouter);
 
-app.get('/',(req,res)=>{
-	console.log('/вв');
-	res.sendFile('index.html');
-});
-app.get('/admin',(req,res)=>{
-	console.log('/ввq');
-	res.sendFile('admin.html',{'root':__dirname+'/public/'});
+app.get('*',(req,res)=>{
+	res.sendFile(__dirname+ '/public/index.html');
 });
 
 app.listen(config.port, ()=>{

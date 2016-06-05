@@ -2,8 +2,12 @@ const mongoose    = require('mongoose');
 const Schema      = mongoose.Schema;
 
 const ChannelSchema = new Schema({
-    name: {type: String, required: true},
-    desc: {type: String, required: true},
+    name: { type: String, required: true },
+    desc: { type: String, required: true },
+    href: { type: String, required: true },
+    img: { type: String, required: true },
+    category: { type: Schema.Types.ObjectId, ref: 'Category' },
+    creator: { type: Schema.Types.ObjectId, ref: 'Users' },
     createdAt: {type: Date, default: Date.now},    
 });
 
@@ -15,4 +19,4 @@ ChannelSchema.pre('save', function(next){
     }
     next();
 });
-module.exports = mongoose.model('channel', ChannelSchema);
+module.exports = mongoose.model('Channel', ChannelSchema);

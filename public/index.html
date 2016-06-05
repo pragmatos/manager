@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html >
+<html ng-app="Manager">
 <head>
   <meta charset="UTF-8">
   <title>Онлай-Manager</title>
@@ -8,12 +8,15 @@
 
   <link href="css/bootstrap.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet" />
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/controllers/MainController.js"></script>
 </head>
-<body>
-q
-s
-<header>
-  </header>
+<body ng-controller="MainController">
+{{2+1}}
+<header ng-include="'app/views/header.html'">
+</header>
 
   <div class="container main ">
     <section class="page-content"></section>
@@ -25,7 +28,7 @@ s
         <div class="container"> <p>&copy; Pi43 2015</p></div>
      
     </footer>
-  <script data-main="js/config" src="js/lib/require.min.js"></script>
+  <!--<script data-main="public/js/config" src="public/js/lib/require.min.js"></script>-->
 
 </body>
 </html>
