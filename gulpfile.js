@@ -1,8 +1,12 @@
-var gulp = require('gulp');
-var livereload = require('gulp-livereload');
+var gulp = require('gulp')
+var concat = require('gulp-concat')
 
-gulp.task('default',()=>{
-		livereload.listen();
+gulp.task('js', function () {
+  gulp.src(['public/app/**/*.js'])
+    .pipe(concat('dest.js'))
+    .pipe(gulp.dest('public/dest'))
+})
 
-	gulp.watch('public/**').on('change', livereload.changed);
-});
+gulp.task('watch', ['js'], function () {
+  gulp.watch('public/app/**/*.js', ['js'])
+})

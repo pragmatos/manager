@@ -1,0 +1,35 @@
+<div id="login-template" class="container" >
+	<div class="row clearfix" id="login-form-container">
+		<!--<img class="displayed" src="/assets/img/logo.png" alt="logo"/>-->
+
+        <div class="col-md-5 well well-lg text-center">
+            <h1>Авторизація</h1>
+            <div class="height:50px;">
+                <ul id="login-errors" class="parsley-error-list"></ul>
+            </div>
+
+            <form id="login-form" class="form" data-validate="parsley">
+                <fieldset>
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="login-login-input" name="login" placeholder="Логін"
+                                ng-model="main.loginData.login">
+                            
+                        </div>
+                    </div>
+                    <div class="control-group ">
+                        <div class="controls">
+                            <input  type="password" id="login-password-input" placeholder="Пароль" name="user_password" ng-model="main.loginData.pass">
+                            <span class="help-block">{{main.error}}</span>
+                        </div>
+                    </div>
+                    <a  id="login-btn" class="btn btn-primary btn-lg" ng-click="main.login()">Ввійти</a>
+
+                </fieldset>
+            </form>
+        </div>
+
+        
+
+	</div>
+</div>

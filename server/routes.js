@@ -11,6 +11,7 @@ module.exports = function(app, express) {
 
 	router.post('/users/signup', users.signup, users.login);
 	router.post('/users/login', users.login);
+	router.get('/users/profile', middleware.isAuth, users.profile);
 	
 
 	//admin

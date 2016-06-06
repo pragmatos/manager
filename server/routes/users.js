@@ -7,15 +7,14 @@ module.exports = (function() {
             if(req.body.login && req.body.pass){
                 User.findOne({ 
                     login:req.body.login
-                }).select('pass login name admin').exec(function(err, user){
-                    console.log(user);  
+                }).select('pass login name admin').exec(function(err, user){  
                     if(err)res.send("error");
                     
                     if(user){
                         var validPass = user.comparePass(req.body.pass);
 
                         if(!validPass) {
-                            res.send('Bad Pass');
+                            res.send({ success: false, message: 'Не правильний password' });
                         }
                         else {
 
@@ -26,6 +25,8 @@ module.exports = (function() {
                                 token: token,
                             });
                         }                        
+                    } else {
+                        res.send( { success: false, message: 'Не правильний login' });
                     }
                 });
             }
@@ -38,7 +39,7 @@ module.exports = (function() {
             if(req.body.login && req.body.pass){
                 User.findOne({login:req.body.login}, function(err, user){
                     if(err) res.send("error");
-                    if(user) res.json({msg:"Користувач з таким логином існує!"});
+                    if(user) res.json({success: false, message :"Користувач з таким логином існує!"});
                     else{
                         console.log(req.body);
                         var newUser = new User(req.body);
@@ -49,6 +50,10 @@ module.exports = (function() {
                     }
                 });  
             }    
+        },
+        profile: function(req, res){
+            console.log(req.decoded);
+            res.json(req.decoded);
         },
         all: function(req, res){
             User.find({},function(err, users){

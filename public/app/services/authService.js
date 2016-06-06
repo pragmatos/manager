@@ -29,7 +29,7 @@ angular.module('authService', [])
 
 	authFactory.getUser = function(){
 		if(AuthToken.getToken())
-			return $http.get('/me');
+			return $http.get('api/users/profile');
 		else
 			return $q.reject({ message: 'User whithout token'});
 	}
@@ -56,16 +56,17 @@ angular.module('authService', [])
 	}
 
 	return authToken;
-}])
+})
 
-.factory('AuthInterceptor', function($q, $location, AuthToken){
+.factory('AuthInterceptor', function(Loader, $q, $location, AuthToken){
 	
 	var interceptor = {};
 
 	interceptor.request = function(config) {
 
+		Loader.ajax = true;
 		var token = AuthToken.getToken();
-
+		console.log('true');
 		if(token) { 
 		
 			config.headers['x-access-token'] = token;
@@ -76,6 +77,11 @@ angular.module('authService', [])
 
 	}
 
+	interceptor.response = function(config) {
+			Loader.ajax = false;
+			console.log('false');
+			return config;
+	}
 	interceptor.responseError = function(res) {
 
 		if(res.status == 403) {
@@ -85,4 +91,9 @@ angular.module('authService', [])
 		return $q.reject(res);
 	}
 	return  interceptor;
-}])
+})
+.factory('Loader', function(){
+	return {
+		ajax:false
+	}
+});

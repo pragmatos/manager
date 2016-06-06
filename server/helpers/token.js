@@ -6,7 +6,8 @@ exports.createToken = function(user){
 	var token = jwt.sign({ 
 		_id : user._id,
 		login: user.login,
-		admin: user.admin
+		admin: user.admin,
+		uname: user.name
 	}, config.secret);
 
 	return token;

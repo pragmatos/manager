@@ -1,0 +1,53 @@
+<div id="login-template" class="container" ng-controller="UserCreateController as user">
+	
+        <div class="col-md-2"></div>
+
+        <div class="col-md-5 well well-lg text-center">
+            <h1>Реєстрація</h1>
+            <div class="height:50px;">
+                <ul id="signup-errors" class="parsley-error-list"></ul>
+            </div>
+            <form id="signup-form" class="form" data-validate="parsley">
+                <fieldset>
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="signup-username-input" name="login" placeholder="Логін" 
+                                ng-model="user.userData.login">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                      <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="name-name-input" name="name" placeholder="Ім'я" 
+                                ng-model="user.userData.name">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="email-name-input" name="name" placeholder="Імейл" 
+                                ng-model="user.userData.email">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <div class="controls">
+                            <input  type="password" id="signup-password-input" placeholder="Пароль" name="user_password" ng-model="user.userData.pass">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <div class="control-group mb20">
+                        <div class="controls">
+                            <input  type="password" id="signup-password-confirm-input" placeholder="Повторити пароль" name="user_password" ng-model="user.confirm.pass">
+                            <span class="help-block help-block1">{{user.msg}}</span>
+                        </div>
+                    </div>
+                    <a href="#" id="signup-btn" class="btn btn-primary btn-lg" ng-click="user.signupUser()">Реєструватися</a>
+                    
+                </fieldset>
+            </form>
+        </div>
+
+	
+</div>

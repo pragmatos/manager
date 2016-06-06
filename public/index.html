@@ -10,25 +10,35 @@
   <link href="css/style.css" rel="stylesheet" />
 
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+
+<script src="dest/dest.js"></script>
+<!--
+  <script src="app/services/authService.js"></script>
+  <script src="app/services/userService.js"></script>
+
+  <script src="app/controllers/userController.js"></script>
+  <script src="app/controllers/mainController.js"></script>
+  
+  <script src="app/app.routes.js"></script>
   <script src="app/app.js"></script>
-  <script src="app/controllers/MainController.js"></script>
+  -->
 </head>
-<body ng-controller="MainController">
-{{2+1}}
+
+<body ng-controller="MainController as main">
 <header ng-include="'app/views/header.html'">
 </header>
-
-  <div class="container main ">
-    <section class="page-content"></section>
+  <div class="container main">
+    <section class="page-content" ng-view></section>
     <div class="for-footer"></div>
-    
-
-  </div> 
+    </div> 
     <footer class="navbar-static-bottom">
         <div class="container"> <p>&copy; Pi43 2015</p></div>
      
     </footer>
   <!--<script data-main="public/js/config" src="public/js/lib/require.min.js"></script>-->
 
+  
 </body>
-</html>
+
+  </html>

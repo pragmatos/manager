@@ -4,33 +4,29 @@
       <a class="brand" href="/">Онлайн менеджер</a>
       <div class="nav-collapse">
         <ul class="nav">
-          <li class="home-menu"><a href="#/home">Головна</a></li>
-          <li class="channels-menu"><a href="#/channels" data-bypass>Канали</a></li>
-           <% if(logged_in){ %>
-          <li class="playlist-menu"><a href="#/playlist" data-bypass>Плей-лист (<%=countPlaylist%>)</a></li>
-          <li class="addchannel-menu"><a href="#/userchannel/add" data-bypass>Додати канал</a></li>
-          <li class="userchannels-menu"><a href="#/userchannels" data-bypass>Мої канали</a></li>
-          <%}%>
+          <li class="home-menu"><a href="/home">Головна</a></li>
+          <li class="channels-menu"><a href="/channels" data-bypass>Канали</a></li>
+          
+          <li ng-show="main.loggedIn" class="playlist-menu"><a href="#/playlist" data-bypass>Плей-лист (<%=countPlaylist%>)</a></li>
+          <li ng-show="main.loggedIn" class="addchannel-menu"><a href="#/userchannel/add" data-bypass>Додати канал</a></li>
+          <li ng-show="main.loggedIn" class="userchannels-menu"><a href="#/userchannels" data-bypass>Мої канали</a></li>
+         
           
         </ul>
         
         <div class="right">
-            <img class="ajax-loader left" src="public/img/ajax-loader.gif" alt="Loading..." />
-      
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" data-bypass><%= user.name %> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a id="logout-link" href="#" data-bypass >Вихід</a></li>
-                        <li><a id="account-link" href="#/profile/id_<%= user.id %>" data-bypass>Профіль</a></li>
-                    </ul>
-                </li>
+            <img class="ajax-loader left" style="display: block;" ng-if="main.l.ajax" src="img/ajax-loader.gif" alt="Loading..." />
+            <ul class="nav navbar-nav navbar-right" ng-show="main.loggedIn">
+       
+                <li><a id="logout-link" href="/" ng-click="main.logout()"  >Вихід</a></li>
+                <li><a id="account-link" href="/profile" >{{main.user.uname}}</a></li>
+          
             </ul>
-            <ul class="nav">
-            <li class="login-menu"><a href="#/login">Вхід</a></li>
-            <li class="singup-menu"><a href="#/signup">Реєстрація</a></li>
+            <ul class="nav" ng-show="!main.loggedIn">
+              <li class="login-menu"><a href="/login">Вхід</a></li>
+              <li class="singup-menu"><a href="/signup">Реєстрація</a></li>
             </ul>
-            <%}%>
+            
             
         </div>
       </div><!--/.nav-collapse -->

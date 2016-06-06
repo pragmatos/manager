@@ -1,22 +1,35 @@
-angular.module('Manager', [])
+angular.module('mainController',[])
 
-.controller('MainController', function($rootScope, $location, Auth){
+.controller('MainController', function($rootScope, $location, Auth, $http, Loader){
 	
 	var vm = this;
-
-	vm.loggedIn = Auth.isLogged();
-
+	
+	vm.l = Loader;
+	vm.user = {};
+	vm.loggedIn = Auth.isLoggedIn();
+	
 	$rootScope.$on('$routeChangeStart', function(){
 
 		vm.loggedIn = Auth.isLoggedIn();
 
+		Auth.getUser()
+			.then(function(data){
+				console.log(data);
+				vm.user = data.data;
+			});
+
 	});
 
 	vm.login = function(){
-		
-		vm.processing = true;
 		Auth.login(vm.loginData.login, vm.loginData.pass)
 			.success(function(data){
+				
+				Auth.getUser()
+					.then(function(data){
+						console.log(data);
+						vm.user = data.data;
+					});
+
 				if(data.success) {
 					$location.path('/');
 				} else {
@@ -27,6 +40,6 @@ angular.module('Manager', [])
 
 	vm.logout = function() {
 		Auth.logout();
-		$location.path('/');
+		$location.path('/home');
 	}
-}]);
+});
