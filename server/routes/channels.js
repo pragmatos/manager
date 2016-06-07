@@ -17,9 +17,8 @@ module.exports = (function() {
             });
         },
         getOne: function(req, res){
-            Superhero.findById(req.params.id, function(err, superhero){
+            Channel.findById(req.params.id, function(err, superhero){
                 if(err) res.send(err);
-                //If no errors, send it back to the client
                 res.json(superhero);
             });     
         }

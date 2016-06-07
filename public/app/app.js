@@ -1,8 +1,10 @@
 angular.module('Manager',[
+	'ngDialog',
 	'mainController', 
 	'authService',
 	'appRoutes',
-	'userController'
+	'userController',
+	'categoryController'
 	])
  
 	.config(function($httpProvider){

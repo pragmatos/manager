@@ -1,0 +1,66 @@
+<table >
+    <tr>
+        <td id="channels">
+            <ul class="list">
+                <div>
+       
+        <img class="left"  width="128" height="128" <% if(channel.img) {%>
+             src="<%= channel.img  %>"
+             <%}else{%>
+             src="public/img/tv.png"
+             <%}%>
+             />
+        </div>
+        <div class="info ">
+            <%if(channel.typeip_id ==2){%>
+            <div class="typeip_radio left"></div>
+            <%}else{%>
+            <div class="typeip_tv left"></div>
+            <%}%>
+            <%if(logged_in){%>
+            <%if(channel.added){%>
+            <div class="added right"></div>
+             
+            <%}%>
+            <%if(!channel.added){%>
+            <div  class="addchannel"></div>
+           
+            <%}%>
+        <%}%>
+            <h3><%=channel.name%></h3>
+            <h5><i><%=channel.href%></i></h5>
+            <p><%= channel.description%></p>
+            
+        </div>
+        <div class="clear"></div>
+                
+            
+        
+        
+
+            </ul>
+        </td>
+       
+       <td class="panel">
+            <div>
+                <ul class="nav nav-list">
+                    <li class="nav-header">Пошук</li>
+                    <li><input class="search-query" placeholder="Почніть вводити..."/></li>
+                </ul>
+                
+                
+            </div>
+            <div class='type'>
+                <ul class="nav nav-list">
+                    <li class="nav-header">Тип телебачення</li>
+                    <li data="0" class="active" ><a href="#"  data-bypass>Всі</a></li>
+                    <li data="1"><a href="#" data-bypass>Тв</a></li>
+                    <li data="2"><a href="#" data-bypass>Радіо</a></li>
+                </ul>
+            </div>
+            <div class="category">
+              
+            </div>
+        </td>
+    </tr>
+</table>

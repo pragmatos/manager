@@ -7,16 +7,10 @@ const ChannelSchema = new Schema({
     href: { type: String, required: true },
     img: { type: String, required: true },
     category: { type: Schema.Types.ObjectId, ref: 'Category' },
+    type: { type: Schema.Types.ObjectId, ref: 'Type' },
     creator: { type: Schema.Types.ObjectId, ref: 'Users' },
     createdAt: {type: Date, default: Date.now},    
 });
 
 
-ChannelSchema.pre('save', function(next){
-    now = new Date();
-    if (!this.createdAt) {
-        this.createdAt = now;
-    }
-    next();
-});
 module.exports = mongoose.model('Channel', ChannelSchema);

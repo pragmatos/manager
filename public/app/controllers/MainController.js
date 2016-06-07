@@ -16,6 +16,7 @@ angular.module('mainController',[])
 			.then(function(data){
 				console.log(data);
 				vm.user = data.data;
+				vm.isAdmin = data.data.admin;
 			});
 
 	});
@@ -28,6 +29,7 @@ angular.module('mainController',[])
 					.then(function(data){
 						console.log(data);
 						vm.user = data.data;
+						vm.isAdmin = data.data.admin;
 					});
 
 				if(data.success) {

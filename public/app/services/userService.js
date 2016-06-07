@@ -8,7 +8,15 @@ angular.module('userService', [])
 	}
 
 	factory.all = function(user){
+		return $http.get('/api/users');
+	}
 
+	facory.delete = function(id){
+		return $http.delete('/api/users/'+id);
+	}
+
+	factory.update = function(id){
+		return $http.put('/api/users/'+id);
 	}
 
 	return factory;

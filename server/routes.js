@@ -1,7 +1,9 @@
 const middleware = require('./middlewares/auth');
 
 const channels = require('./routes/channels');
-const users = require('./routes/users');
+const users 	 = require('./routes/users');
+const categories = require('./routes/categories');
+
 
 module.exports = function(app, express) {
 	var router = express.Router();
@@ -24,12 +26,14 @@ module.exports = function(app, express) {
 	//router.get('/users/:id', users.getOne);
 	//router.post();
 	//router.delete('/users/:id', users.deleteOne);
+	router.route('/category')
+		  .get(categories.getAll)
+		  .post(middleware.isAuth,middleware.isAdmin, categories.post);
 
-
-
-
-	//router.post('/login', middleware.login);
-	router.get('/token', middleware.isAuth)
+	router.route('/category/:id')
+		  .get(categories.getOne)
+		  .delete(middleware.isAuth,middleware.isAdmin, categories.deleteOne)
+		  .put(middleware.isAuth,middleware.isAdmin, categories.updateOne);
 
     return router;    
 };

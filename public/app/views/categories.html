@@ -1,0 +1,45 @@
+
+<h2>Категорії</h2>
+
+<table class="table" >
+		<thead>
+		<tr>
+			<th>
+				№
+			</th>
+			<th>
+				Назва
+			</th>
+			<th>Опції
+			</th>
+		</tr>	
+		</thead>
+
+		<tr>
+		<td>#</td>
+			<td>
+    <input class="form-control input-sm" id="inputsm" type="text" ng-model="category.item.name">
+  </div>	
+			</td>
+			<td>
+				<a href="" ng-if="!category.item._id" ng-click="category.add()" class="btn btn-success">Додати категорію</a>
+				<a href=""  ng-click="category.update(category.item._id)" class="btn btn-success">Обновити</a>
+			</td>
+		</tr>
+	<tr ng-repeat="cat in category.categories.items">
+		<td>
+			{{$index+1}}
+		</td>
+		<td>
+			{{cat.name}}
+		</td>
+		<td>
+			<button class="btn btn-default" ng-click="category.edit(cat._id)">edit</button>
+			<button class="btn btn-danger" ng-click="category.delete(cat._id)">delete</button>		
+		</td>
+
+	</tr>
+</table>
+
+
+	

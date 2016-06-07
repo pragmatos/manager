@@ -9,13 +9,14 @@
           
           <li ng-show="main.loggedIn" class="playlist-menu"><a href="#/playlist" data-bypass>Плей-лист (<%=countPlaylist%>)</a></li>
           <li ng-show="main.loggedIn" class="addchannel-menu"><a href="#/userchannel/add" data-bypass>Додати канал</a></li>
-          <li ng-show="main.loggedIn" class="userchannels-menu"><a href="#/userchannels" data-bypass>Мої канали</a></li>
+          <li ng-show="main.loggedIn" class="userchannels-menu"><a href="#/userchannels" data-bypass>Мої канали</a>
+          <li ng-show="main.isAdmin" class="userchannels-menu"><a href="/categories" data-bypass>Категорії</a></li>
          
           
         </ul>
         
         <div class="right">
-            <img class="ajax-loader left" style="display: block;" ng-if="main.l.ajax" src="img/ajax-loader.gif" alt="Loading..." />
+            <img class="ajax-loader" style="display: block; position: fixed; left: 0; bottom: 0;" ng-if="main.l.ajax" width="250" src="img/spinner.gif" alt="Loading..." />
             <ul class="nav navbar-nav navbar-right" ng-show="main.loggedIn">
        
                 <li><a id="logout-link" href="/" ng-click="main.logout()"  >Вихід</a></li>

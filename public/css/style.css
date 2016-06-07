@@ -166,6 +166,7 @@ ul#listing li th{
    
 }
 .container.main .page-content{
+    text-align: center;
     height: 100%;
 }
 .container table{
