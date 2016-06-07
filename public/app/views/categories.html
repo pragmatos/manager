@@ -23,7 +23,7 @@
 			</td>
 			<td>
 				<a href="" ng-if="!category.item._id" ng-click="category.add()" class="btn btn-success">Додати категорію</a>
-				<a href=""  ng-click="category.update(category.item._id)" class="btn btn-success">Обновити</a>
+				<a href="" ng-if="category.item._id" ng-click="category.update(category.item._id)" class="btn btn-success">Обновити</a>
 			</td>
 		</tr>
 	<tr ng-repeat="cat in category.categories.items">

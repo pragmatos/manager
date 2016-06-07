@@ -32,8 +32,8 @@ module.exports = function(app, express) {
 
 	router.route('/category/:id')
 		  .get(categories.getOne)
-		  .delete(middleware.isAuth,middleware.isAdmin, categories.deleteOne)
-		  .put(middleware.isAuth,middleware.isAdmin, categories.updateOne);
+		  .delete(middleware.isAuth, middleware.isAdmin, categories.deleteOne)
+		  .put(middleware.isAuth, middleware.isAdmin, categories.updateOne);
 
     return router;    
 };

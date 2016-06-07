@@ -1,6 +1,6 @@
 angular.module('categoryController',['categoryService'])
 
-.controller('CategoryController', function(CategoryService, ngDialog){
+.controller('CategoryController', function(CategoryService){
 
 	var vm = this;
 	vm.item = null;

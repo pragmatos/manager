@@ -66,7 +66,6 @@ angular.module('authService', [])
 
 		Loader.ajax = true;
 		var token = AuthToken.getToken();
-		console.log('true');
 		if(token) { 
 		
 			config.headers['x-access-token'] = token;
@@ -79,7 +78,6 @@ angular.module('authService', [])
 
 	interceptor.response = function(config) {
 			Loader.ajax = false;
-			console.log('false');
 			return config;
 	}
 	interceptor.responseError = function(res) {

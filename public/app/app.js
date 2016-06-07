@@ -1,5 +1,4 @@
 angular.module('Manager',[
-	'ngDialog',
 	'mainController', 
 	'authService',
 	'appRoutes',

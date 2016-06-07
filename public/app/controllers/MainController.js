@@ -14,7 +14,6 @@ angular.module('mainController',[])
 
 		Auth.getUser()
 			.then(function(data){
-				console.log(data);
 				vm.user = data.data;
 				vm.isAdmin = data.data.admin;
 			});
