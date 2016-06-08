@@ -1,4 +1,4 @@
-<table >
+<table ng-if="!main.isAdmin">
     <tr>
         <td id="channels">
             <ul class="list">
@@ -64,3 +64,95 @@
         </td>
     </tr>
 </table>
+<div ng-if="main.isAdmin">
+<h2>Канали</h2>
+<table class="table" >
+        <thead>
+        <tr>
+            <th>
+                №
+            </th>
+            <th>
+                Назва
+            </th>
+            <th>Опції
+            </th>
+        </tr>   
+        </thead>
+
+        <tr>
+        <td>#</td>
+            <td>
+    <input class="form-control input-sm" id="inputsm" type="text" ng-model="category.item.name">
+  </div>    
+            </td>
+            <td>
+                <a href="" ng-if="!category.item._id" ng-click="channels.showEdit=!channel.showEdit" class="btn btn-success">Додати канал</a>
+                <a href="" ng-if="category.item._id" ng-click="category.update(category.item._id)" class="btn btn-success">Обновити</a>
+            </td>
+        </tr>
+    <tr ng-repeat="cat in category.categories.items">
+        <td>
+            {{$index+1}}
+        </td>
+        <td>
+            {{cat.name}}
+        </td>
+        <td>
+            <button class="btn btn-default" ng-click="category.edit(cat._id)">edit</button>
+            <button class="btn btn-danger" ng-click="category.delete(cat._id)">delete</button>      
+        </td>
+
+    </tr>
+</table>
+</div>
+
+<div id="myModal" class="modal" style="width: 900px; left:0; right: 0; top:100px; margin: 0 auto;" role="dialog" ng-show="channels.showEdit">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="channels.showEdit=false" >&times;</button>
+        <h4 class="modal-title">Редагувати канал</h4>
+      </div>
+      <div class="modal-body">
+      <form >
+      <table class="table">
+            <tr>
+                <th>Назва</th>
+                <td><input class="form-control input-sm" ng-model="channel.name" type="text" name="name"></td>
+            </tr>
+            <tr>
+                <th>Адреса</th>
+                <td><input class="form-control input-sm" ng-model="channel.href" type="text"></td>
+            </tr>
+            <tr>
+                <th>Тип каналу</th>
+                <td><select class="form-control" ng-model="channel.type">
+                        <option value="1" ng-selected="true">TV</option>
+                        <option value="2">Radio</option>
+                        
+                    </select>
+                </td>
+            </tr>
+            <tr ng-controller="CategoryController as category">
+                <th>Категорія</th>
+                <td>
+                <select class="form-control" ng-model="channel.category" ng-options="cat._id as cat.name for cat in category.categories.items">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Зображення</th>
+                <td><input type="file" name="img" file-model="channel.file"></td>
+            </tr>
+        </table>
+        </form>
+{{channel}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="post()">Зберігти</button>
+      </div>
+    </div>
+
+  </div>
+</div>

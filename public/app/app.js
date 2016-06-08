@@ -3,7 +3,8 @@ angular.module('Manager',[
 	'authService',
 	'appRoutes',
 	'userController',
-	'categoryController'
+	'categoryController',
+	'channelsController'
 	])
  
 	.config(function($httpProvider){

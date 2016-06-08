@@ -7,7 +7,7 @@ const ChannelSchema = new Schema({
     href: { type: String, required: true },
     img: { type: String, required: true },
     category: { type: Schema.Types.ObjectId, ref: 'Category' },
-    type: { type: Schema.Types.ObjectId, ref: 'Type' },
+    type: { type: String, default: 'TV' },
     creator: { type: Schema.Types.ObjectId, ref: 'Users' },
     createdAt: {type: Date, default: Date.now},    
 });

@@ -1,15 +1,35 @@
 const middleware = require('./middlewares/auth');
+const path		 = require('path');
 
+const multer  = require('multer');
 const channels = require('./routes/channels');
 const users 	 = require('./routes/users');
 const categories = require('./routes/categories');
 
 
+const storage = multer.diskStorage({
+  destination: './public/uploads/img/',
+  filename: function (req, file, cb) {
+    	
+    	console.log(file);
+
+      cb(null, file.fieldname+"_"+req.decoded._id+ path.extname(file.originalname) );
+    
+  }
+})
+
+var upload = multer({ storage: storage });
+
 module.exports = function(app, express) {
 	var router = express.Router();
 
-    router.get('/channels', channels.getAll);
-	router.post('/channels', channels.post);
+    router.route('/channels')
+    	.get(channels.getAll)
+    	.post(middleware.isAuth, middleware.isAdmin, upload.single('file'), channels.post);
+	router.route('/channels/:id')
+		.get(channels.getOne)
+		.put(middleware.isAuth, middleware.isAdmin, channels.updateOne)
+		.delete(middleware.isAuth, middleware.isAdmin, channels.deleteOne);
 
 	router.post('/users/signup', users.signup, users.login);
 	router.post('/users/login', users.login);

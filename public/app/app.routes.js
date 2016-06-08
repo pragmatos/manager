@@ -11,15 +11,15 @@ angular.module('appRoutes', ['ngRoute'])
 		.when('/signup', {
 			templateUrl: 'app/views/signup-page.html'
 		})
-		.when('/channels', {
-			templateUrl: 'app/views/channels.html'
-		})
 		.when('/categories', {
 			templateUrl: 'app/views/categories.html',
 			controller: 'CategoryController',
 			controllerAs: 'category'
 		})
-
+		.when('/channels', {
+			templateUrl: 'app/views/channels.html',
+			controller: 'ChannelsController'
+		})
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false
