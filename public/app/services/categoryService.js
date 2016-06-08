@@ -27,5 +27,13 @@ angular.module('categoryService', [])
 	cat.updateOne = function(id, data){
 		return $http.put('/api/category/'+id, data);
 	}
+	cat.getCategoryById = function(id){
+		for(var i in cat.items) {
+			if(i._id == id){
+				console.log(i);
+				return i;
+			}
+		}
+	}
 	return cat;
 });

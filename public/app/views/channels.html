@@ -65,8 +65,8 @@
     </tr>
 </table>
 <div ng-if="main.isAdmin">
-<h2>Канали</h2>
-<table class="table" >
+<h2>Канали <a href="" ng-if="!category.item._id" ng-click="channels.showEdit=!channel.showEdit" class="btn btn-success right">Додати канал</a></h2> 
+<table class="table vetr-align" >
         <thead>
         <tr>
             <th>
@@ -75,39 +75,56 @@
             <th>
                 Назва
             </th>
-            <th>Опції
+            <th>Посилання
             </th>
+            <th>Тип
+            </th>
+            <th>Категорія
+            </th>
+            <th>Зображення
+            </th>
+
         </tr>   
         </thead>
 
-        <tr>
-        <td>#</td>
-            <td>
-    <input class="form-control input-sm" id="inputsm" type="text" ng-model="category.item.name">
-  </div>    
-            </td>
-            <td>
-                <a href="" ng-if="!category.item._id" ng-click="channels.showEdit=!channel.showEdit" class="btn btn-success">Додати канал</a>
-                <a href="" ng-if="category.item._id" ng-click="category.update(category.item._id)" class="btn btn-success">Обновити</a>
-            </td>
-        </tr>
-    <tr ng-repeat="cat in category.categories.items">
+    
+    <tr ng-repeat="item in channels.items">
         <td>
+
             {{$index+1}}
         </td>
         <td>
-            {{cat.name}}
+        
+            {{item.name}}
+        </td>
+        <td >
+            
+            {{item.href}}
         </td>
         <td>
+            {{item.type}}
+        </td>
+        <td ng-click="categories.getCategoryById(item.category)">
+         {{categories.getCategoryById(item.category)|json}}
+            {{item.category}}
+         
+        </td>
+        <td><img ng-src="/uploads/img/{{item.img}}" width="50" alt="">
+            {{item.img}}
+        </td>
+        
+        
+        
+        <td>
             <button class="btn btn-default" ng-click="category.edit(cat._id)">edit</button>
-            <button class="btn btn-danger" ng-click="category.delete(cat._id)">delete</button>      
+            <button class="btn btn-danger" ng-click="delete(item._id)">delete</button>      
         </td>
 
     </tr>
 </table>
 </div>
 
-<div id="myModal" class="modal" style="width: 900px; left:0; right: 0; top:100px; margin: 0 auto;" role="dialog" ng-show="channels.showEdit">
+<div id="myModal" class="modal" style="width: 900px; left:0; right: 0; top:50px; margin: 0 auto;" role="dialog" ng-if="channels.showEdit">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -138,19 +155,24 @@
                 <th>Категорія</th>
                 <td>
                 <select class="form-control" ng-model="channel.category" ng-options="cat._id as cat.name for cat in category.categories.items">
+                    <option value="">----</option>
                     </select>
                 </td>
+            </tr>
+            <tr>
+                <th>Опис</th>
+                <td><textarea class="form-control" rows="3" ng-model="channel.desc"></textarea></td>
             </tr>
             <tr>
                 <th>Зображення</th>
                 <td><input type="file" name="img" file-model="channel.file"></td>
             </tr>
+            {{channel}}
         </table>
         </form>
-{{channel}}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" ng-click="post()">Зберігти</button>
+        <button type="button" class="btn btn-success" ng-click="post()">Зберігти</button>
       </div>
     </div>
 

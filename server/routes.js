@@ -10,10 +10,10 @@ const categories = require('./routes/categories');
 const storage = multer.diskStorage({
   destination: './public/uploads/img/',
   filename: function (req, file, cb) {
-    	
-    	console.log(file);
+    	req.file = file;
+    	req.datatime = Date.now();
 
-      cb(null, file.fieldname+"_"+req.decoded._id+ path.extname(file.originalname) );
+      cb(null, file.fieldname+"_"+req.datatime+ path.extname(file.originalname) );
     
   }
 })

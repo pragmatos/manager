@@ -1,5 +1,5 @@
 const Channel = require('../models/channel');
-
+const path       = require('path');
 module.exports = (function() {
     return {
         getAll : function(req, res){
@@ -10,16 +10,25 @@ module.exports = (function() {
             });
         },
         post: function(req, res){
-            console.log(req.body,req.file);
-            res.send(req.file);
-            //var newChannel = new Channel(req.body);
-            //newChannel.save(function(err){
-              //  if(err) res.send(err);
-                //res.json(req.body);
-            //});
-        },
-        test: function(req,res){
-            res.send(req.body);
+            var imgUrl = "";
+            if(req.file) {
+                imgUrl = req.file.fieldname+"_"+req.datatime+ path.extname(req.file.originalname);
+            }
+
+            console.log(req.body);
+            var newChannel = new Channel({
+                name: req.body.name,
+                href: req.body.href,
+                desc: req.body.desc,
+                category: req.body.category,
+                type: req.body.type,
+                img: imgUrl,
+                creator: req.decoded._id
+            });
+            newChannel.save(function(err, channel){
+                if(err) res.send(err);
+                res.json(channel);
+            });
         },
         getOne: function(req, res){
             Channel.findById(req.params.id, function(err, channel){

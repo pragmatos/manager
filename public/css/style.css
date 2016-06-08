@@ -172,6 +172,9 @@ ul#listing li th{
 .container table{
     width: 100%;
 }
+table.vetr-align td{
+    vertical-align: middle; !importent
+}
 .container td{
     vertical-align: top;
     border-right:  1px solid #dae2e8;

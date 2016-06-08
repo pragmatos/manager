@@ -14,11 +14,13 @@ angular.module('channelsService', [])
 		var fd = new FormData();
 		for(var key in data)
 			fd.append(key, data[key]);
-		console.log(data, fd);
 		return $http.post('/api/channels', fd, {
 			transformRequest: angular.indentity,
 			headers: { 'Content-Type': undefined }
 		});
+	}
+	chan.delete = function(id) {
+		return $http.delete('/api/channels/'+ id);
 	}
 
 	return chan;
