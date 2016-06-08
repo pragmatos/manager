@@ -2,8 +2,7 @@
     <tr>
         <td id="channels">
             <ul class="list">
-                   
-               <li ng-repeat="item in channels.items|filter:{name:channels.search} | filter:{type:channels.type}">
+               <li ng-repeat="item in channels.items|filter:{name:search} | filter:{category:categories.type}">
                <div>
 
                     <img class="left" ng-show="item.img" width="128" height="128" ng-src="/uploads/img/{{item.img}}"/>
@@ -31,7 +30,7 @@
             <div>
                 <ul class="nav nav-list">
                     <li class="nav-header">Пошук</li>
-                    <li><input class="search-query" ng-model="channels.search" placeholder="Почніть вводити..."/></li>
+                    <li><input class="search-query" ng-model="search" placeholder="Почніть вводити..."/></li>
                 </ul>
                 
                 
@@ -39,13 +38,20 @@
             <div class='type'>
                 <ul class="nav nav-list">
                     <li class="nav-header">Тип телебачення</li>
-                    <li data="0" ng-class="{active:channels.type==''}" ><a href="#"  data-bypass ng-click="channels.type=''">Всі</a></li>
-                    <li data="1" ng-class="{active:channels.type=='TV'}" ng-click="channels.type='TV'"><a href="#" data-bypass >Тв</a></li>
-                    <li data="2" ng-class="{active:channels.type== 'Radio'}" ng-click="channels.type='Radio'"><a href="#" data-bypass>Радіо</a></li>
+                    <li data="0" ng-class="{active:type==''}" ><a href="#"  data-bypass ng-click="type=''">Всі</a></li>
+                    <li data="1" ng-class="{active:type=='TV'}" ng-click="type='TV'"><a href="#" data-bypass >Тв</a></li>
+                    <li data="2" ng-class="{active:type== 'Radio'}" ng-click="type='Radio'"><a href="#" data-bypass>Радіо</a></li>
                 </ul>
             </div>
-            <div class="category">
-              
+            <div class="category" >
+                <ul class="nav nav-list">
+                    <li class="nav-header">Категорія</li>
+                    <li data="0" ng-class="{active:categories.type==''}" ><a href="#" ng-click="categories.type=''">Всі</a></li>
+                    
+                    <li ng-repeat="category in categories.items" ng-class="{active:categories.type==category._id}" ng-click="categories.type=category._id"><a href="#">{{category.name}}</a></li>
+                    
+                    
+                </ul>
             </div>
         </td>
     </tr>
@@ -90,9 +96,8 @@
         <td>
             {{item.type}}
         </td>
-        <td>
-            {{item.category}}
-         
+        <td> 
+            {{categories.getCategoryById(item.category)}}  
         </td>
         <td><img ng-src="/uploads/img/{{item.img}}" width="50" alt="">
             {{item.img}}

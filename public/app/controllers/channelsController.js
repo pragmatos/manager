@@ -8,8 +8,11 @@ angular.module('channelsController',['channelsService'])
 	$scope.channels = ChannelsService;
 	$scope.categories = CategoryService;
 	$scope.channel = {};
-
+	$scope.type = '';
+	$scope.categories.type = '';
+	
 	ChannelsService.all();
+	CategoryService.getAll();
 	$scope.post = function(){
 		ChannelsService.post($scope.channel)
 			.success(function(res){

@@ -14,8 +14,7 @@ module.exports = (function() {
             if(req.file) {
                 imgUrl = req.file.fieldname+"_"+req.datatime+ path.extname(req.file.originalname);
             }
-
-            console.log(req.body);
+            
             var newChannel = new Channel({
                 name: req.body.name,
                 href: req.body.href,
@@ -26,6 +25,7 @@ module.exports = (function() {
                 creator: req.decoded._id
             });
             newChannel.save(function(err, channel){
+                console.log(channel);
                 if(err) res.send(err);
                 res.json(channel);
             });

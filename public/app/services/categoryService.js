@@ -29,9 +29,8 @@ angular.module('categoryService', [])
 	}
 	cat.getCategoryById = function(id){
 		for(var i in cat.items) {
-			if(i._id == id){
-				console.log(i);
-				return i;
+			if(cat.items[i]._id == id){
+				return cat.items[i].name;
 			}
 		}
 	}
