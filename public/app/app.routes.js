@@ -20,6 +20,10 @@ angular.module('appRoutes', ['ngRoute'])
 			templateUrl: 'app/views/channels.html',
 			controller: 'ChannelsController'
 		})
+		.when('/users', {
+			templateUrl: 'app/views/users.html',
+			controller: 'UserController'
+		})
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false

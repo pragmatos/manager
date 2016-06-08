@@ -1,0 +1,88 @@
+
+<h2>Користувачі</h2>
+
+<table class="table" >
+		<thead>
+		<tr>
+			<th>
+				№
+			</th>
+			<th>
+				Ім'я
+			</th>
+			<th>
+				Логін
+			</th>
+			<th>Роль
+			</th>
+		</tr>	
+		</thead>
+
+		
+	<tr ng-repeat="user in users">
+		<td>
+			{{$index+1}}
+		</td>
+		<td>
+			{{user.name}}
+		</td>
+		<td>
+			{{user.login}}
+		</td>
+		<td>
+			<span ng-if="user.admin">Admin</span>
+			<span ng-if="!user.admin">User</span>
+		</td>
+		<td>
+			{{user.email}}
+		</td>
+		<td>
+			<button class="btn btn-default" ng-click="edit(user)">edit</button>
+			<button class="btn btn-danger" ng-click="delete(user._id)">delete</button>		
+		</td>
+
+	</tr>
+</table>
+<div id="myModal" class="modal" style="width: 900px; left:0; right: 0; top:50px; margin: 0 auto;" role="dialog" ng-show="showEdit">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="showEdit=false" >&times;</button>
+        <h4 class="modal-title">Редагувати користувача</h4>
+      </div>
+      <div class="modal-body">
+      <form >
+      <table class="table">
+            <tr>
+                <th>Ім'я</th>
+                <td><input class="form-control input-sm" ng-model="user.name" type="text" name="name"></td>
+            </tr>
+             <tr>
+                <th>Логін</th>
+                <td><input class="form-control input-sm" ng-model="user.login" type="text"></td>
+            </tr>
+            <tr>
+                <th>Емейл</th>
+                <td><input class="form-control input-sm" ng-model="user.email" type="text"></td>
+            </tr>
+            <tr>
+                <th>Роль</th>
+                <td>
+					<input type="checkbox" ng-model="user.admin">
+					<span ng-if="user.admin">Admin</span>
+			<span ng-if="!user.admin">User</span>
+                </td>
+            </tr>
+            
+        </table>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="update()">Обновити</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+	

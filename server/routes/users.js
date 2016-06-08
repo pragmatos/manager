@@ -76,6 +76,16 @@ module.exports = (function() {
                 if(err) res.send(404);
                 res.json(user);
             });
+        },
+        updateOne: function(req,res){
+            User.findByIdAndUpdate(req.params.id,{$set:req.body}, function(err, cat){
+                if(err)res.send(404);
+                if(cat){
+                    res.send(cat);
+                }
+                else
+                    res.send("not found");
+            });
         }
     }
 })();  

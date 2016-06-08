@@ -41,11 +41,9 @@ module.exports = function(app, express) {
 		.get(middleware.isAuth, middleware.isAdmin, users.all)
 	router.route('/users/:id')
 		.get(middleware.isAuth, users.getOne)
+		.put(middleware.isAuth, middleware.isAdmin, users.updateOne)
 		.delete(middleware.isAuth, middleware.isAdmin, users.deleteOne);	
-	//router.get('/users', middleware.isAuth, middleware.isAdmin, users.all);
-	//router.get('/users/:id', users.getOne);
-	//router.post();
-	//router.delete('/users/:id', users.deleteOne);
+	
 	router.route('/category')
 		  .get(categories.getAll)
 		  .post(middleware.isAuth,middleware.isAdmin, categories.post);

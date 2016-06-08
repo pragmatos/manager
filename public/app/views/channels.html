@@ -64,8 +64,8 @@
         </td>
     </tr>
 </table>
-<div ng-if="main.isAdmin">
-<h2>Канали <a href="" ng-if="!category.item._id" ng-click="channels.showEdit=!channel.showEdit" class="btn btn-success right">Додати канал</a></h2> 
+<div ng-show="main.isAdmin">
+<h2>Канали <a   ng-click="showEdit=true;isNew=true" class="btn btn-success right">Додати канал</a></h2> 
 <table class="table vetr-align" >
         <thead>
         <tr>
@@ -104,8 +104,7 @@
         <td>
             {{item.type}}
         </td>
-        <td ng-click="categories.getCategoryById(item.category)">
-         {{categories.getCategoryById(item.category)|json}}
+        <td>
             {{item.category}}
          
         </td>
@@ -113,10 +112,8 @@
             {{item.img}}
         </td>
         
-        
-        
         <td>
-            <button class="btn btn-default" ng-click="category.edit(cat._id)">edit</button>
+            <button class="btn btn-default" ng-click="edit(item)">edit</button>
             <button class="btn btn-danger" ng-click="delete(item._id)">delete</button>      
         </td>
 
@@ -124,11 +121,11 @@
 </table>
 </div>
 
-<div id="myModal" class="modal" style="width: 900px; left:0; right: 0; top:50px; margin: 0 auto;" role="dialog" ng-if="channels.showEdit">
+<div id="myModal" class="modal" style="width: 900px; left:0; right: 0; top:50px; margin: 0 auto;" role="dialog" ng-show="showEdit">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" ng-click="channels.showEdit=false" >&times;</button>
+        <button type="button" class="close" data-dismiss="modal" ng-click="showEdit=false" >&times;</button>
         <h4 class="modal-title">Редагувати канал</h4>
       </div>
       <div class="modal-body">
@@ -145,8 +142,8 @@
             <tr>
                 <th>Тип каналу</th>
                 <td><select class="form-control" ng-model="channel.type">
-                        <option value="1" ng-selected="true">TV</option>
-                        <option value="2">Radio</option>
+                        <option value="TV" ng-selected="true">TV</option>
+                        <option value="Radio">Radio</option>
                         
                     </select>
                 </td>
@@ -167,12 +164,12 @@
                 <th>Зображення</th>
                 <td><input type="file" name="img" file-model="channel.file"></td>
             </tr>
-            {{channel}}
         </table>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" ng-click="post()">Зберігти</button>
+        <button type="button" ng-show="isNew" class="btn btn-success" ng-click="post()">Зберігти</button>
+        <button type="button" ng-show="!isNew" class="btn btn-success" ng-click="update()">Обновити</button>
       </div>
     </div>
 
