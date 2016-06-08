@@ -2,7 +2,7 @@
     <tr>
         <td id="channels">
             <ul class="list">
-               <li ng-repeat="item in channels.items|filter:{name:search} | filter:{category:categories.type}">
+               <li ng-repeat="item in channels.items|filter:{name:search}|  filter:{type:type}|filter:{category:categories.type}">
                <div>
 
                     <img class="left" ng-show="item.img" width="128" height="128" ng-src="/uploads/img/{{item.img}}"/>
