@@ -1,43 +1,29 @@
-<table ng-if="!main.isAdmin">
+<table ng-show="!main.isAdmin" >
     <tr>
         <td id="channels">
             <ul class="list">
-                <div>
-       
-        <img class="left"  width="128" height="128" <% if(channel.img) {%>
-             src="<%= channel.img  %>"
-             <%}else{%>
-             src="public/img/tv.png"
-             <%}%>
-             />
-        </div>
-        <div class="info ">
-            <%if(channel.typeip_id ==2){%>
-            <div class="typeip_radio left"></div>
-            <%}else{%>
-            <div class="typeip_tv left"></div>
-            <%}%>
-            <%if(logged_in){%>
-            <%if(channel.added){%>
-            <div class="added right"></div>
-             
-            <%}%>
-            <%if(!channel.added){%>
-            <div  class="addchannel"></div>
-           
-            <%}%>
-        <%}%>
-            <h3><%=channel.name%></h3>
-            <h5><i><%=channel.href%></i></h5>
-            <p><%= channel.description%></p>
-            
-        </div>
-        <div class="clear"></div>
-                
-            
-        
-        
+                   
+               <li ng-repeat="item in channels.items|filter:{name:channels.search} | filter:{type:channels.type}">
+               <div>
 
+                    <img class="left" ng-show="item.img" width="128" height="128" ng-src="/uploads/img/{{item.img}}"/>
+                    <img class="left" ng-show="!item.img" width="128" height="128" ng-src="/img/tv.png"/>
+               </div>
+                        <div class="info ">
+                            <div ng-class="{typeip_radio:item.type=='Radio',typeip_tv:item.type=='TV'}" class="left"></div>
+                            <div ng-show="main.loggedIn">
+                                <div ng-show="item.added" class="added right"></div>
+                                <div ng-show="!item.added" class="addchannel" ng-click="item.added=true"></div>
+                            </div>
+                        
+                            <h3>{{item.name}}</h3>
+                            <h5><i>{{item.href}}</i></h5>
+                            <p>{{item.desc}}</p>
+                    
+                </div>
+                <div class="clear"></div>
+            
+        </li>    
             </ul>
         </td>
        
@@ -45,7 +31,7 @@
             <div>
                 <ul class="nav nav-list">
                     <li class="nav-header">Пошук</li>
-                    <li><input class="search-query" placeholder="Почніть вводити..."/></li>
+                    <li><input class="search-query" ng-model="channels.search" placeholder="Почніть вводити..."/></li>
                 </ul>
                 
                 
@@ -53,9 +39,9 @@
             <div class='type'>
                 <ul class="nav nav-list">
                     <li class="nav-header">Тип телебачення</li>
-                    <li data="0" class="active" ><a href="#"  data-bypass>Всі</a></li>
-                    <li data="1"><a href="#" data-bypass>Тв</a></li>
-                    <li data="2"><a href="#" data-bypass>Радіо</a></li>
+                    <li data="0" ng-class="{active:channels.type==''}" ><a href="#"  data-bypass ng-click="channels.type=''">Всі</a></li>
+                    <li data="1" ng-class="{active:channels.type=='TV'}" ng-click="channels.type='TV'"><a href="#" data-bypass >Тв</a></li>
+                    <li data="2" ng-class="{active:channels.type== 'Radio'}" ng-click="channels.type='Radio'"><a href="#" data-bypass>Радіо</a></li>
                 </ul>
             </div>
             <div class="category">
