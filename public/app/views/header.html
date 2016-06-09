@@ -14,14 +14,14 @@
           <li ng-show="main.loggedIn&&!main.isAdmin" class="userchannels-menu" ng-class="{active: main.isActive('/userchannels')}"><a href="userchannels" data-bypass>Мої канали</a>
 
           <li ng-show="main.isAdmin" class="userchannels-menu" ng-class="{active: main.isActive('/categories')}"><a href="/categories" data-bypass>Категорії</a></li>
-          
+
            <li ng-show="main.isAdmin" class="userchannels-menu" ng-class="{active: main.isActive('/users')}"><a href="/users" data-bypass>Користувачі</a></li>
         </ul>
         
         <div class="right">
             <img class="ajax-loader" style="display: block; position: fixed; left: 0; bottom: 0;" ng-if="main.l.ajax" width="250" src="img/spinner.gif" alt="Loading..." />
             <ul class="nav navbar-nav navbar-right" ng-show="main.loggedIn">
-                <li><a id="account-link" href="/profile" >{{main.user.uname}}</a></li>
+                <li ng-class="{active: main.isActive('/profile')}"><a id="account-link" href="/profile" >{{main.user.uname}}</a></li>
                 <li><a id="logout-link" href="/" ng-click="main.logout()"  >Вихід</a></li>
                 
           

@@ -36,6 +36,9 @@ angular.module('appRoutes', ['ngRoute','as.sortable'])
 			templateUrl: 'app/views/channel/users.html',
 			controller: 'UserChannelsController'
 		})
+		.when('/profile', {
+			templateUrl: 'app/views/profile.html'
+		})
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false
