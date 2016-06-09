@@ -14,7 +14,6 @@ angular.module('playlistController',[])
 		PlaylistService.delete(id)
 			.success(function(res){
 				PlaylistService.getAll();
-				console.log(res);
 			});
 	}
 	$scope.generateLink = function(){
@@ -22,7 +21,6 @@ angular.module('playlistController',[])
 			.success(function(res){
 				$scope.isCreated = true;
 				$scope.url = res;
-				console.log(res);
 			});
 	}
 	$scope.download = function() {

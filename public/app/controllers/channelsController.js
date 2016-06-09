@@ -1,6 +1,6 @@
 angular.module('channelsController',['channelsService'])
 
-.controller('ChannelsController', function($scope,ChannelsService, CategoryService, PlaylistService){
+.controller('ChannelsController', function($scope, $location, ChannelsService, CategoryService, PlaylistService){
 
 	var vm = this;
 	$scope.showEdit = false;
@@ -17,7 +17,7 @@ angular.module('channelsController',['channelsService'])
 		ChannelsService.post($scope.channel)
 			.success(function(res){
 				$scope.showEdit = false;
-				ChannelsService.all();
+				$location.path('/channels');
 				$scope.channel = {};
 			});
 	}

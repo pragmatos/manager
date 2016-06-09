@@ -28,6 +28,14 @@ angular.module('appRoutes', ['ngRoute','as.sortable'])
 			templateUrl: 'app/views/playlist.html',
 			controller: 'PlaylistController'
 		})
+		.when('/newchannel', {
+			templateUrl: 'app/views/channel/edit-channel.html',
+			controller: 'ChannelsController'
+		})
+		.when('/userchannels', {
+			templateUrl: 'app/views/channel/users.html',
+			controller: 'UserChannelsController'
+		})
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false

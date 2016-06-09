@@ -6,7 +6,8 @@ angular.module('Manager',[
 	'userController',
 	'categoryController',
 	'channelsController',
-	'playlistController'
+	'playlistController',
+	'userChannelsController'
 	])
  
 	.config(function($httpProvider){

@@ -1,19 +1,46 @@
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
+<h4 class="modal-title" style="margin-top: 20px;">Редагувати канал</h4>
+      <form >
+      <table class="table" style="margin-top: 20px;">
+            <tr>
+                <th>Назва</th>
+                <td><input class="form-control input-sm" ng-model="channel.name" type="text" name="name"></td>
+            </tr>
+            <tr>
+                <th>Адреса</th>
+                <td><input class="form-control input-sm" ng-model="channel.href" type="text"></td>
+            </tr>
+            <tr>
+                <th>Тип каналу</th>
+                <td><select class="form-control" ng-model="channel.type">
+                        <option value="TV" ng-selected="true">TV</option>
+                        <option value="Radio">Radio</option>
+                    </select>
+                </td>
+            </tr>
+            <tr ng-controller="CategoryController as category">
+                <th>Категорія</th>
+                <td>
+                <select class="form-control" ng-model="channel.category" ng-options="cat._id as cat.name for cat in category.categories.items">
+                    <option value="">----</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Опис</th>
+                <td><textarea class="form-control" rows="3" ng-model="channel.desc"></textarea></td>
+            </tr>
+            <tr>
+                <th>Зображення</th>
+                <td><input type="file" name="img" file-model="channel.file"></td>
+            </tr>
+        </table>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" ng-show="isNew" class="btn btn-success" ng-click="post()">Зберігти</button>
+        <button type="button" ng-show="!isNew" class="btn btn-success" ng-click="update()">Обновити</button>
       </div>
     </div>
 
   </div>
-</div>

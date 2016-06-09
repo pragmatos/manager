@@ -25,6 +25,12 @@ angular.module('channelsService', [])
 	chan.put = function(data){
 		return $http.put('/api/channels/'+data._id, data);
 	}
+	chan.getUsersChannels = function(){
+		return $http.get('/api/userchannels');
+	}
+	chan.deleteUserChannel = function(id){
+		return $http.delete('/api/userchannels/'+id);
+	}
 
 	return chan;
 });

@@ -25,12 +25,18 @@ module.exports = function(app, express) {
 	var router = express.Router();
 
     router.route('/channels')
-    	.get(channels.getAll)
-    	.post(middleware.isAuth, middleware.isAdmin, upload.single('file'), channels.post);
+    	  .get(channels.getAll)
+    	  .post(middleware.isAuth, upload.single('file'), channels.post);
+
 	router.route('/channels/:id')
-		.get(channels.getOne)
-		.put(middleware.isAuth, middleware.isAdmin, channels.updateOne)
-		.delete(middleware.isAuth, middleware.isAdmin, channels.deleteOne);
+		  .get(channels.getOne)
+		  .put(middleware.isAuth, middleware.isAdmin, channels.updateOne)
+		  .delete(middleware.isAuth, middleware.isAdmin, channels.deleteOne);
+
+
+	router.get('/userchannels', middleware.isAuth, channels.getUserChannels);
+	router.delete('/userchannels/:id', middleware.isAuth, channels.deleteUserChannel);
+	
 
 	router.post('/users/signup', users.signup, users.login);
 	router.post('/users/login', users.login);
@@ -39,11 +45,11 @@ module.exports = function(app, express) {
 
 	//admin
 	router.route('/users')
-		.get(middleware.isAuth, middleware.isAdmin, users.all)
+		  .get(middleware.isAuth, middleware.isAdmin, users.all)
 	router.route('/users/:id')
-		.get(middleware.isAuth, users.getOne)
-		.put(middleware.isAuth, middleware.isAdmin, users.updateOne)
-		.delete(middleware.isAuth, middleware.isAdmin, users.deleteOne);	
+		  .get(middleware.isAuth, users.getOne)
+		  .put(middleware.isAuth, middleware.isAdmin, users.updateOne)
+		  .delete(middleware.isAuth, middleware.isAdmin, users.deleteOne);	
 	
 	router.route('/category')
 		  .get(categories.getAll)
@@ -62,5 +68,6 @@ module.exports = function(app, express) {
 		  .delete(middleware.isAuth, playlist.deleteOne);
 
 	router.post('/playlist/file', middleware.isAuth, playlist.createFile );
+
     return router;    
 };
