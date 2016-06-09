@@ -1,4 +1,5 @@
 const Playlist = require('../models/playlist');
+const CFile    = require('../helpers/createFile');
 
 module.exports = (function() {
     return {
@@ -26,6 +27,11 @@ module.exports = (function() {
                 res.json(cat);
             });
         },
+        createFile: function(req, res) {
+            var name = CFile.create(req);
+
+            res.send(name);
+         }
 
 	}
 })();

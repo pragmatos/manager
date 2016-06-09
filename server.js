@@ -30,7 +30,6 @@ app.use('/api', apiRouter);
 app.get('*',(req,res)=>{
 	res.sendFile(__dirname+ '/public/index.html');
 });
-
 app.listen(config.port, ()=>{
 	console.log('Listening on port: ' + config.port);
 });

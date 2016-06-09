@@ -41,8 +41,8 @@
             <div class="category">
                 <ul class="nav nav-list ">
                      <li class="nav-header">Опція:</li>
-                <li  ><a class  ="greateFile" href="#" data-bypass>Генерація файлу</a></li>
-                <li  ><a class  ="loadfile" style="display: none" href="" data-bypass>Завантажити</a></li>
+                <li  ng-show="!isCreated"><a class  ="greateFile" href="#" ng-click="generateLink()">Генерація файлу</a></li>
+                <li  ng-show="isCreated"><a class  ="loadfile" target="_blank"  href="{{url}}">Завантажити</a></li>
                 
                 
                 </ul>

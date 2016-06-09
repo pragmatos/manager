@@ -9,7 +9,6 @@ angular.module('playlistService', [])
 	o.getAll = function(){
 		$http.get('/api/playlist')
 			.success(function(res){
-				console.log(res);
 				o.items = res;
 			});
 	}
@@ -20,6 +19,19 @@ angular.module('playlistService', [])
 	
 	o.delete = function(id){
 		return $http.delete('/api/playlist/'+id);
+	}
+
+	o.createFile = function(){
+		var data = [];
+		for(var i in o.items) {
+			data.push({
+				name: o.items[i].channel.name,
+				href: o.items[i].channel.href
+			});
+			
+		}
+
+		return $http.post('/api/playlist/file', data);
 	}
 	return o;
 

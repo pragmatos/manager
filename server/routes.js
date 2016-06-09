@@ -59,6 +59,8 @@ module.exports = function(app, express) {
 		  .post(middleware.isAuth, playlist.post)
 		  .get(middleware.isAuth, playlist.getAll);
 	router.route('/playlist/:id')
-		  .delete(middleware.isAuth, playlist.deleteOne)
+		  .delete(middleware.isAuth, playlist.deleteOne);
+
+	router.post('/playlist/file', middleware.isAuth, playlist.createFile );
     return router;    
 };
