@@ -1,8 +1,9 @@
 <table class="pro" style="text-align: left;">
     <tr>
         <td id="playlist" >
-            <ul id="listing" class="list left">
-                <li ng-repeat="item in items.items">
+            <ul id="listing" class="list left" data-as-sortable data-ng-model="items.items">
+                <li ng-repeat="item in items.items"  data-as-sortable-item>
+                <div data-as-sortable-item-handle>
 				<span class="list-header" ng-class="{active: isShow[$index]}" ng-click="showDetails($index)">
 		            <div class="left" ng-class="{typeip_radio:item.channel.type=='Radio',typeip_tv:item.channel.type=='TV'}" class="left"></div>
 		            {{item.channel.name}}<div class="delete-icon right" ng-click=delete(item._id)></div></span>
@@ -22,6 +23,7 @@
 		             </table>
 					
 				</div>
+                </div>
 				</li>
             </ul>
         </td>

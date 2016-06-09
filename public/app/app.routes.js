@@ -1,4 +1,4 @@
-angular.module('appRoutes', ['ngRoute'])
+angular.module('appRoutes', ['ngRoute','as.sortable'])
 
 .config(function($routeProvider, $locationProvider) {
 	$routeProvider
