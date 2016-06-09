@@ -12,7 +12,7 @@
                             <div ng-class="{typeip_radio:item.type=='Radio',typeip_tv:item.type=='TV'}" class="left"></div>
                             <div ng-show="main.loggedIn">
                                 <div ng-show="item.added" class="added right"></div>
-                                <div ng-show="!item.added" class="addchannel" ng-click="item.added=true"></div>
+                                <div ng-show="!item.added" class="addchannel" ng-click="addToPlaylist(item)"></div>
                             </div>
                         
                             <h3>{{item.name}}</h3>

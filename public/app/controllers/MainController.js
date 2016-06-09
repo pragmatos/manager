@@ -1,6 +1,6 @@
 angular.module('mainController',[])
 
-.controller('MainController', function($rootScope, $location, Auth, $http, Loader){
+.controller('MainController', function($rootScope, $location, Auth, $http, Loader, PlaylistService){
 	
 	var vm = this;
 	
@@ -8,7 +8,8 @@ angular.module('mainController',[])
 	vm.user = {};
 	vm.loggedIn = Auth.isLoggedIn();
 	
-
+	vm.playlist = PlaylistService;
+	PlaylistService.getAll();
 	$rootScope.$on('$routeChangeStart', function(){
 
 		vm.loggedIn = Auth.isLoggedIn();

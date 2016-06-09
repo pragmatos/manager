@@ -1,0 +1,50 @@
+<table class="pro" style="text-align: left;">
+    <tr>
+        <td id="playlist" >
+            <ul id="listing" class="list left">
+                <li ng-repeat="item in items.items">
+				<span class="list-header" ng-class="{active: isShow[$index]}" ng-click="showDetails($index)">
+		            <div class="left" ng-class="{typeip_radio:item.channel.type=='Radio',typeip_tv:item.channel.type=='TV'}" class="left"></div>
+		            {{item.channel.name}}<div class="delete-icon right" ng-click=delete(item._id)></div></span>
+				{{item.showIt}}
+				<div class="details" ng-class="{showit: isShow[$index]}">
+		                    <img class="left" ng-show="item.channel.img" width="30" height="30" ng-src="/uploads/img/{{item.channel.img}}">
+		                    <img class="left" ng-show="!item.channel.img" width="30" height="30" ng-src="public/img/tv.png">
+		             <table >
+		                 <tr >
+		                     <th style="text-align: left; width: 30px;">Href:</th>
+		                     <td>{{item.channel.href}}</td>
+		                 </tr>
+		                 <tr>
+		                     <th style="text-align: left;">Опис:</th>
+		                     <td>{{item.channel.desc}}</td>
+		                 </tr>
+		             </table>
+					
+				</div>
+				</li>
+            </ul>
+        </td>
+       
+       <td class="panel">
+            
+            
+            <div class='type'>
+                <ul class="nav nav-list ">
+                    <li class="nav-header">Сортувати по типу:</li>
+                    <li data="0"  class="active r" ><a class = "bytype" href="#"  data-bypass>Тв зверху</a></li>
+                    <li data="1"  class="r" ><a class = "bytype" href="#" data-bypass>Тв знизу</a></li>
+                </ul>
+            </div>
+            <div class="category">
+                <ul class="nav nav-list ">
+                     <li class="nav-header">Опція:</li>
+                <li  ><a class  ="greateFile" href="#" data-bypass>Генерація файлу</a></li>
+                <li  ><a class  ="loadfile" style="display: none" href="" data-bypass>Завантажити</a></li>
+                
+                
+                </ul>
+            </div>
+        </td>
+    </tr>
+</table>

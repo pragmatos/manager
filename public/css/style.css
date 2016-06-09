@@ -145,6 +145,9 @@ ul#listing li .details {
 	padding:20px;
 	font-size:0.9em;
 }
+ul#listing li .showit{
+    display: block !important;
+}
  .delete-icon{
     background: url('../img/delete_icon.png');
     width: 16px;

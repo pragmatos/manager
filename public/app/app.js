@@ -1,10 +1,12 @@
 angular.module('Manager',[
 	'mainController', 
 	'authService',
+	'playlistService',
 	'appRoutes',
 	'userController',
 	'categoryController',
-	'channelsController'
+	'channelsController',
+	'playlistController'
 	])
  
 	.config(function($httpProvider){

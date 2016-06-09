@@ -24,6 +24,10 @@ angular.module('appRoutes', ['ngRoute'])
 			templateUrl: 'app/views/users.html',
 			controller: 'UserController'
 		})
+		.when('/playlist', {
+			templateUrl: 'app/views/playlist.html',
+			controller: 'PlaylistController'
+		})
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false

@@ -1,6 +1,6 @@
 angular.module('channelsController',['channelsService'])
 
-.controller('ChannelsController', function($scope,ChannelsService, CategoryService){
+.controller('ChannelsController', function($scope,ChannelsService, CategoryService, PlaylistService){
 
 	var vm = this;
 	$scope.showEdit = false;
@@ -39,6 +39,14 @@ angular.module('channelsController',['channelsService'])
 				$scope.channel = {};
 				ChannelsService.all();
 			});
+	}
+	$scope.addToPlaylist = function(channel) {
+		PlaylistService.add(channel._id)
+			.success(function(res){
+				channel.added = true;
+				PlaylistService.getAll();	
+		});
+		console.log(channel);
 	}
 
 })

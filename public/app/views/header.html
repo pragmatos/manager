@@ -7,7 +7,7 @@
           <li class="home-menu"><a href="/home">Головна</a></li>
           <li class="channels-menu" ng-class="{active: main.isActive('/channels')}"><a href="/channels" data-bypass>Канали</a></li>
           
-          <li ng-show="main.loggedIn&&!main.isAdmin" class="playlist-menu"><a href="#/playlist" data-bypass>Плей-лист (10)</a></li>
+          <li ng-show="main.loggedIn&&!main.isAdmin" class="playlist-menu" ng-class="{active: main.isActive('/playlist')}"><a href="/playlist" >Плей-лист ({{main.playlist.items.length}})</a></li>
           <li ng-show="main.loggedIn&&!main.isAdmin" class="addchannel-menu"><a href="#/userchannel/add" data-bypass>Додати канал</a></li>
           <li ng-show="main.loggedIn&&!main.isAdmin" class="userchannels-menu"><a href="#/userchannels" data-bypass>Мої канали</a>
           <li ng-show="main.isAdmin" class="userchannels-menu" ng-class="{active: main.isActive('/categories')}"><a href="/categories" data-bypass>Категорії</a></li>

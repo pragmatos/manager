@@ -1,10 +1,11 @@
 const middleware = require('./middlewares/auth');
 const path		 = require('path');
 
-const multer  = require('multer');
-const channels = require('./routes/channels');
+const multer     = require('multer');
+const channels   = require('./routes/channels');
 const users 	 = require('./routes/users');
 const categories = require('./routes/categories');
+const playlist   = require('./routes/playlist');
 
 
 const storage = multer.diskStorage({
@@ -53,5 +54,11 @@ module.exports = function(app, express) {
 		  .delete(middleware.isAuth, middleware.isAdmin, categories.deleteOne)
 		  .put(middleware.isAuth, middleware.isAdmin, categories.updateOne);
 
+
+	router.route('/playlist')
+		  .post(middleware.isAuth, playlist.post)
+		  .get(middleware.isAuth, playlist.getAll);
+	router.route('/playlist/:id')
+		  .delete(middleware.isAuth, playlist.deleteOne)
     return router;    
 };
